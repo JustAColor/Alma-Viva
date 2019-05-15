@@ -24,7 +24,7 @@
         
         <input type="password" placeholder=" contraseña" class="form-control" name="txtPass">
         <input type="submit" name="btnIngresar" class="btn btn-primary btn-block" value="ingresar">
-        <a href="?load=registrar">No tienes cuenta?</a>
+        <a href="?load=registrar">¿No tienes cuenta?</a>
       </form>
     </div>
   </body>
