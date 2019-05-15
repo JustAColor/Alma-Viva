@@ -19,7 +19,7 @@
         public function userExist($user,$pass){
           
             $sql = "SELECT * FROM 
-            usuario WHERE username='{$user}' AND password='{$pass}'";
+            usuario WHERE username='{$user}'";// AND password='{$pass}'
             $query = $this->conn->returnQuery($sql);
             $canFilas = mysqli_num_rows($query);
 
