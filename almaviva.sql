@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2019 a las 21:29:29
--- Versión del servidor: 10.1.39-MariaDB
+-- Tiempo de generación: 17-05-2019 a las 23:10:02
+-- Versión del servidor: 10.1.40-MariaDB
 -- Versión de PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -21,6 +21,18 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `almaviva`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `chat`
+--
+
+CREATE TABLE `chat` (
+  `iduser` int(11) NOT NULL,
+  `username` varchar(20) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `mensaje` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -52,6 +64,18 @@ CREATE TABLE `pais` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `publicacion`
+--
+
+CREATE TABLE `publicacion` (
+  `iduser` int(11) NOT NULL,
+  `username` varchar(20) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `publicacion` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -63,8 +87,22 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`iduser`, `username`, `password`, `tipoUser`) VALUES
+(1, 'admin', 'admin', 0),
+(2, 'admin', 'admin', 1);
+
+--
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`iduser`);
 
 --
 -- Indices de la tabla `infouser`
@@ -80,6 +118,12 @@ ALTER TABLE `pais`
   ADD PRIMARY KEY (`idpais`);
 
 --
+-- Indices de la tabla `publicacion`
+--
+ALTER TABLE `publicacion`
+  ADD PRIMARY KEY (`iduser`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -90,20 +134,38 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `pais`
 --
 ALTER TABLE `pais`
   MODIFY `idpais` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `publicacion`
+--
+ALTER TABLE `publicacion`
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `chat`
+--
+ALTER TABLE `chat`
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`iduser`) REFERENCES `usuario` (`iduser`);
 
 --
 -- Filtros para la tabla `infouser`
@@ -111,6 +173,12 @@ ALTER TABLE `usuario`
 ALTER TABLE `infouser`
   ADD CONSTRAINT `infouser_ibfk_1` FOREIGN KEY (`iduser`) REFERENCES `usuario` (`iduser`),
   ADD CONSTRAINT `infouser_ibfk_2` FOREIGN KEY (`idpais`) REFERENCES `pais` (`idpais`);
+
+--
+-- Filtros para la tabla `publicacion`
+--
+ALTER TABLE `publicacion`
+  ADD CONSTRAINT `publicacion_ibfk_1` FOREIGN KEY (`iduser`) REFERENCES `usuario` (`iduser`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
