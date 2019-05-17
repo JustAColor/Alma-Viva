@@ -19,7 +19,7 @@
         public function userExist($user,$pass){
           
             $sql = "SELECT * FROM 
-            usuario WHERE username='{$user}'";// AND password='{$pass}'
+            usuario WHERE username='{$user}' AND password='{$pass}'";
             $query = $this->conn->returnQuery($sql);
             $canFilas = mysqli_num_rows($query);
 
@@ -34,10 +34,10 @@
                 $sql ="SELECT * FROM usuario WHERE username = '{$user}'";
                 $query = $this->conn->returnQuery($sql);
                 foreach ($query as $currentUser) {
-                    $this->nombre = $currentUser['Nombre']; 
-                    $this->apellido = $currentUser['Apellido'];
-                    $this->idUser = $currentUser['iduser'];
-                    $this->username = $currentUser['username'];
+                    //$this->nombre = $currentUser['Nombre']; 
+                    //$this->apellido = $currentUser['Apellido'];
+                    //$this->idUser = $currentUser['iduser'];
+                    //$this->username = $currentUser['username'];
             }
         }
 

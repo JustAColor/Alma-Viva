@@ -10,7 +10,7 @@
         }
 
         public function getCurrentUser(){
-            return $_SESSION['username'];
+            return $_SESSION['user'];
         }
 
         //metodo para cerrar sesion
