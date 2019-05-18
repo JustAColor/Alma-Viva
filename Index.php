@@ -24,5 +24,4 @@
     }else {
         include_once 'vistas/login.php';
     }
-    
 ?>
