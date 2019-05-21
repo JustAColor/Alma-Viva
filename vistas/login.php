@@ -7,7 +7,7 @@ include_once 'module/router.php';
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Login Form Design One | Fazt</title>
+    <title>Login</title>
     <link rel="stylesheet" href="Style/css/master.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
@@ -32,7 +32,7 @@ include_once 'module/router.php';
       <?php
         include_once 'module/router.php';
         $enrutador = new Router();
-        if(!isset($_GET['load'])&&$_SESSION['session_start']==false){
+        if(!isset($_GET['load']) && $_SESSION['session_start']==false){
           $_GET['load']='registrar';
           $enrutador->loadView($_GET['load']);
         }else{

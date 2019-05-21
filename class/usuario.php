@@ -17,9 +17,13 @@
 
         //traer los datos del usuario 
         public function userExist($user,$pass){
-          
+            $codeUser = htmlentities($user);
+            $codePass = htmlentities($pass);
+            $codeUserphp = mysqli_real_escape_string($this->conn->con, $codeUser);
+            $codePassphp = mysqli_real_escape_string($this->conn->con, $codePass);
+            $encript = md5(sha1(md5($codePassphp)));
             $sql = "SELECT * FROM 
-            usuario WHERE username='{$user}' AND password='{$pass}'";
+            usuario WHERE username='{$codeUserphp}' AND password='{$encript}'";
             $query = $this->conn->returnQuery($sql);
             $canFilas = mysqli_num_rows($query);
 
