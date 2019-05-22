@@ -24,22 +24,10 @@ include_once 'module/router.php';
         
         <input type="password" placeholder=" contraseña" class="form-control" name="txtPass">
         <input type="submit" name="btnIngresar" class="btn btn-primary btn-block" value="ingresar">
-        <a href="?load=registrar">¿No tienes cuenta?</a>
+        <a href="vistas/registrar.php">¿No tienes cuenta?</a>
       </form>
     </div>
   <main>
-    <section>
-      <?php
-        include_once 'module/router.php';
-        $enrutador = new Router();
-        if(!isset($_GET['load']) && $_SESSION['session_start']==false){
-          $_GET['load']='registrar';
-          $enrutador->loadView($_GET['load']);
-        }else{
-          $enrutador->loadView($_GET['load']);
-        }
-      ?>
-    </section>
   </main>
   </body>
 </html>
