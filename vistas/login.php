@@ -27,7 +27,5 @@ include_once 'module/router.php';
         <a href="vistas/registrar.php">¿No tienes cuenta?</a>
       </form>
     </div>
-  <main>
-  </main>
   </body>
 </html>
