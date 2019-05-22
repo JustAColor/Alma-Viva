@@ -5,7 +5,7 @@
         private $user;
         private $pass;
         private $db;
-        private $con;
+        public $con;
 
         //metodo constructor 
         public function __construct(){

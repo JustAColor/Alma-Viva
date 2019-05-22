@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2019 a las 21:29:29
+-- Tiempo de generación: 22-05-2019 a las 21:05:50
 -- Versión del servidor: 10.1.39-MariaDB
--- Versión de PHP: 7.3.5
+-- Versión de PHP: 7.1.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,9 +58,16 @@ CREATE TABLE `pais` (
 CREATE TABLE `usuario` (
   `iduser` int(11) NOT NULL,
   `username` varchar(20) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `password` varchar(20) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `tipoUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`iduser`, `username`, `password`, `tipoUser`) VALUES
+(1, 'admin', '66b65567cedbc743bda3417fb813b9ba', 1);
 
 --
 -- Índices para tablas volcadas
@@ -99,7 +106,7 @@ ALTER TABLE `pais`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

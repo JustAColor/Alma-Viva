@@ -1,7 +1,7 @@
 <?php
     include_once 'conexion.php';
     class Usuario{
-        private $conn;
+        public $conn;
         private $nombre;
         private $apellido;
         private $edad;
