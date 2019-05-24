@@ -21,6 +21,7 @@
             $userSession->setCurrentUser($userForm);
             $user->setUser($userForm);
             include_once 'vistas/inicio.php';
+            
 
         }else{
 
