@@ -50,7 +50,7 @@
             $query = $this->conn->returnQuery($sql);
             $canFilas = mysqli_num_rows($query);
 
-            if($canFilas = 0){
+            if($canFilas > 0){
                 return true;
             }else{
                 return false;

@@ -37,7 +37,7 @@
     </div>
     <div class="col">
       <select name="selGenero" id="" class="custom-select">
-          <option value="">choose</option>
+          <option value="">Genero</option>
           <option value="m">Masculino</option>
           <option value="f">Femenino</option>
       </select>
@@ -61,6 +61,15 @@ if(isset($_POST['btnRegistrar'])){
         
     $userForm = $_POST['txtUser'];
     if ($user->usuarioVerificacion($userForm)){
+        ?>
+        <script>
+            txt = document.getElementById("user");
+            console.log(txt.innerHTML);
+            txt.setCustomValidity('El usuario ya existe.');
+            //txt.innerHTML="El usuario ya existe.";
+        </script>
+        <?php
+    }else{
         $encript = md5(sha1(md5($_POST['txtClave'])));
         $user->__SET('username', $_POST['txtUser']);
         $user->__SET('pass',  $encript);
@@ -79,13 +88,6 @@ if(isset($_POST['btnRegistrar'])){
             Error al registrar, comuniquese con soporte técnico</p>';
         } 
         include_once 'view/login.php';
-    }else{?>
-        <script>
-        txt = document.getElementById("user");
-        console.log(txt.innerHTML);
-        txt.innerHTML="Oelo";
-        </script>
-<?php
     }
     
 } ?>
