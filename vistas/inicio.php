@@ -20,7 +20,13 @@ include_once 'class/session.php';
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <title><?php echo $_GET['load']?></title>
+    <title> Welcome <?php 
+    if (isset($_SESSION['session_start'])) {
+        if ($_SESSION['session_start']==true){
+            echo  $_SESSION['username'];
+        }
+    }
+    ?></title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-success navbar-dark">

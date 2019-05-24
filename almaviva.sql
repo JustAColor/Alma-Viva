@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2019 a las 21:05:50
+-- Tiempo de generación: 24-05-2019 a las 22:40:21
 -- Versión del servidor: 10.1.39-MariaDB
 -- Versión de PHP: 7.1.29
 
@@ -29,25 +29,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `infouser` (
-  `iduser` int(11) NOT NULL,
-  `Nombre` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `Apellido` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `telefono` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) DEFAULT NULL,
+  `telefono` int(11) DEFAULT NULL,
   `edad` int(11) NOT NULL,
-  `genero` varchar(1) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `idpais` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pais`
---
-
-CREATE TABLE `pais` (
-  `idpais` int(11) NOT NULL,
-  `Pais` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+  `genero` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -56,18 +44,17 @@ CREATE TABLE `pais` (
 --
 
 CREATE TABLE `usuario` (
-  `iduser` int(11) NOT NULL,
-  `username` varchar(20) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `password` varchar(100) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `tipoUser` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `tipouser` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`iduser`, `username`, `password`, `tipoUser`) VALUES
-(1, 'admin', '66b65567cedbc743bda3417fb813b9ba', 1);
+INSERT INTO `usuario` (`username`, `password`, `tipouser`) VALUES
+('admin', '66b65567cedbc743bda3417fb813b9ba', 1);
 
 --
 -- Índices para tablas volcadas
@@ -77,36 +64,13 @@ INSERT INTO `usuario` (`iduser`, `username`, `password`, `tipoUser`) VALUES
 -- Indices de la tabla `infouser`
 --
 ALTER TABLE `infouser`
-  ADD KEY `iduser` (`iduser`),
-  ADD KEY `idpais` (`idpais`);
-
---
--- Indices de la tabla `pais`
---
-ALTER TABLE `pais`
-  ADD PRIMARY KEY (`idpais`);
+  ADD KEY `username` (`username`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`iduser`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `pais`
---
-ALTER TABLE `pais`
-  MODIFY `idpais` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Restricciones para tablas volcadas
@@ -116,8 +80,7 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `infouser`
 --
 ALTER TABLE `infouser`
-  ADD CONSTRAINT `infouser_ibfk_1` FOREIGN KEY (`iduser`) REFERENCES `usuario` (`iduser`),
-  ADD CONSTRAINT `infouser_ibfk_2` FOREIGN KEY (`idpais`) REFERENCES `pais` (`idpais`);
+  ADD CONSTRAINT `infouser_ibfk_1` FOREIGN KEY (`username`) REFERENCES `usuario` (`username`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
