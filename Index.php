@@ -43,8 +43,8 @@
                 <script>
                     txt = document.getElementById("user");
                     console.log(txt.innerHTML);
-                    txt.setCustomValidity('El usuario ya existe.');
-                    //txt.innerHTML="El usuario ya existe.";
+                    
+                    txt.innerHTML="El usuario ya existe.";
                 </script>
                 <?php
             }else{
