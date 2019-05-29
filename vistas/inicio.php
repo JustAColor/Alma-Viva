@@ -55,7 +55,7 @@ include_once 'class/session.php';
 <?php
    if (isset($_SESSION['session_start'])) {
     if ($_SESSION['session_start']==true){
-        echo "<a class='nav-link' href='?load=chat'>chat</a>";
+        echo "<a class='nav-link' href='?load=chat'>Chat</a>";
     }
 }
 ?>

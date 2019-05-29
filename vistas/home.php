@@ -56,7 +56,7 @@
                                     <img src="img/2.png" style="height:500px;" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/3.jpg"style="height:500px;" class="d-block w-100" alt="...">
+                                    <img src="img/3.png"style="height:500px;" class="d-block w-100" alt="...">
                                 </div>
                                 </div>
                                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
