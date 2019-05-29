@@ -16,6 +16,16 @@
             $this->con = new mysqli($this->host,$this->user,$this->pass,$this->db) or die ("No se puedo conectar");
         }
 
+        public function simpleQuery($query){
+            //try - catch
+            try {
+                $stm = $this->con->query($query);
+            } catch (Exception $e) {
+                $this->con->rollback();
+                mysqli_free_result( $stm);
+                mysqli_close($this->con);
+            }
+        }
         public function returnQuery($query){
             try {
                 $stm = $this->con->query($query);

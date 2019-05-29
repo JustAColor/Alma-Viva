@@ -14,6 +14,9 @@
             $this->conn = new Conexion();
         }
 
+        public function __SET($atributo, $valor){
+            $this->$atributo = $valor;
+        }
         //traer los datos del usuario 
         public function userExist($user,$pass){
             $codeUser = htmlentities($user);

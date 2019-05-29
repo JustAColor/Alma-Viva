@@ -33,7 +33,7 @@
         <div class="form-group ">
         <div class="row">
     <div class="col">
-      <input type="text" class="form-control" placeholder="Edad">
+      <input type="text" class="form-control" name="txtEdad" required placeholder="Edad">
     </div>
     <div class="col">
       <select name="selGenero" id="" class="custom-select">
@@ -46,7 +46,7 @@
   </div>
   <div class="form-group">
             </div>
-            <input type="submit" name="btnRegistrar" class="btn btn-primary btn-block" value="registrarse">
+            <button name="btnRegistrar" class="btn btn-primary btn-block">Registrarse</button>
         </div>
         <div class="form-group">
             <?php if(isset($mensage) && $mensage != ""){ echo $mensage;}?>
@@ -54,43 +54,7 @@
         </div>
     </form>
 </div>
-<?php
-include_once 'class/usuario.php';
-$user = new Usuario();
-if(isset($_POST['btnRegistrar'])){
-        
-    $userForm = $_POST['txtUser'];
-    if ($user->usuarioVerificacion($userForm)){
-        ?>
-        <script>
-            txt = document.getElementById("user");
-            console.log(txt.innerHTML);
-            txt.setCustomValidity('El usuario ya existe.');
-            //txt.innerHTML="El usuario ya existe.";
-        </script>
-        <?php
-    }else{
-        $encript = md5(sha1(md5($_POST['txtClave'])));
-        $user->__SET('username', $_POST['txtUser']);
-        $user->__SET('pass',  $encript);
-        $user->__SET('nombre',  $_POST['txtNombre']);
-        $user->__SET('telefono',  $_POST['txtTelefono']);
-        $user->__SET('apellido',  $_POST['txtApellido']);
-        $user->__SET('genero',  $_POST['selGenero']);
-        //var_dump(); exit;
-        $registro = $user->insertarUsuario();
-        if($registro == true){
-            $mensage = '<p class="alert alert-success agiletis" role="alert">
-            Datos registrados correctamente</p>';
-            $user->insertarDatosUsuario();
-        }else{
-            $mensage = '<p class="alert alert-danger agiletis" role="alert">
-            Error al registrar, comuniquese con soporte técnico</p>';
-        } 
-        include_once 'view/login.php';
-    }
-    
-} ?>
+
 <script>
 
     var password, password2;
